@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Enabled: 1
+  m_Script: {fileID: 11500000, guid: b7f59e54f2bfd184b9dd451a678d089b, type: 3}
+  m_Name: Jump_Bounce
+  m_EditorClassIdentifier: 
+  m_Position:
+  - X:
+      Amplitude: 0.25
+      Frequency: 2.50
+    Y:
+      Amplitude: 0.95
+      Frequency: 2.00
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 0.18
+      Frequency: 3.00
+    Y:
+      Amplitude: 0.60
+      Frequency: 2.60
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 0.10
+      Frequency: 3.50
+    Y:
+      Amplitude: 0.35
+      Frequency: 3.00
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  m_Orientation:
+  - X:
+      Amplitude: 3.0
+      Frequency: 2.5
+    Y:
+      Amplitude: 2.5
+      Frequency: 2.0
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 2.0
+      Frequency: 3.0
+    Y:
+      Amplitude: 1.5
+      Frequency: 2.8
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 1.0
+      Frequency: 3.5
+    Y:
+      Amplitude: 0.8
+      Frequency: 3.0
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0

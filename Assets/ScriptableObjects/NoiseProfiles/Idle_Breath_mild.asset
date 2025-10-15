@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Enabled: 1
+  m_Script: {fileID: 11500000, guid: b7f59e54f2bfd184b9dd451a678d089b, type: 3}
+  m_Name: Idle_Breath_mild
+  m_EditorClassIdentifier: 
+  m_Position:
+  - X:
+      Amplitude: 0.025
+      Frequency: 0.25
+    Y:
+      Amplitude: 0.05
+      Frequency: 0.20
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 0.015
+      Frequency: 0.35
+    Y:
+      Amplitude: 0.02
+      Frequency: 0.3
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  m_Orientation:
+  - X:
+      Amplitude: 0.25
+      Frequency: 0.15
+    Y:
+      Amplitude: 0.20
+      Frequency: 0.12
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
+  - X:
+      Amplitude: 0.15
+      Frequency: 0.25
+    Y:
+      Amplitude: 0.10
+      Frequency: 0.2
+    Z:
+      Amplitude: 0.0
+      Frequency: 0.0
