@@ -17,7 +17,6 @@ public class InventoryManager : MonoBehaviour
     public System.Action onInventoryUpdated;
     public System.Action<InventorySlot> onItemSelected;  // ✅ New event
     // ✅ This event notifies any UI or system that the inventory changed
-    public static event Action onInventoryChanged;
 
     private float currentWeight;
     public InventorySlot GetCurrentItem()
@@ -82,7 +81,7 @@ public class InventoryManager : MonoBehaviour
 
                 if (remainingQuantity <= 0)
                 {
-                    onInventoryUpdated?.Invoke();
+                    NotifyInventoryChanged();
                     UIManager.Instance?.ShowMessage($"+ {quantity}x {itemData.itemName}");
                     return true;
                 }
@@ -105,7 +104,6 @@ public class InventoryManager : MonoBehaviour
         }
 
         // 3️⃣ Done — trigger UI update
-        onInventoryUpdated?.Invoke();
         UIManager.Instance?.ShowMessage($"+ {quantity}x {itemData.itemName}");
         NotifyInventoryChanged(); // ✅ broadcast update
         return true;
@@ -172,7 +170,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void NotifyInventoryChanged()
     {
-        onInventoryChanged?.Invoke();
+        onInventoryUpdated?.Invoke();
     }
     public float GetCurrentWeight() => currentWeight;
 

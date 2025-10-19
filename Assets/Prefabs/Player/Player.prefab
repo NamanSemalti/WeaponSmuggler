@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8792e615dd01c47b74d8907d347e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 10
+  interactDistance: 3
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 64

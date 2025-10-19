@@ -16,7 +16,8 @@ public class BuyerSlotUI : MonoBehaviour, IDropHandler
     public void Setup(BuyerRequest request)
     {
         requestData = request;
-        itemNameText.text = request.item.itemName;
+        if (itemNameText)
+            itemNameText.text = request.item.itemName;
         quantityText.text = $"0 / {request.requiredQuantity}";
         itemIcon.sprite = request.item.icon;
         background.color = Color.white;

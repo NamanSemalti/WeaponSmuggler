@@ -32,7 +32,7 @@ public class CraftingUI : MonoBehaviour
 
         CraftingManager.Instance.onCraftingProgress += UpdateProgress;
         CraftingManager.Instance.onCraftingComplete += OnCraftingComplete;
-        InventoryManager.onInventoryChanged += RefreshUI;
+        InventoryManager.Instance.onInventoryUpdated += RefreshUI;
 
 
         progressBar.gameObject.SetActive(false);
@@ -43,7 +43,7 @@ public class CraftingUI : MonoBehaviour
     {
         CraftingManager.Instance.onCraftingProgress -= UpdateProgress;
         CraftingManager.Instance.onCraftingComplete -= OnCraftingComplete;
-        InventoryManager.onInventoryChanged -= RefreshUI;
+        InventoryManager.Instance.onInventoryUpdated -= RefreshUI;
     }
 
     private void RefreshRecipeList()
