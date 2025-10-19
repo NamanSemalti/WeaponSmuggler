@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
     [Header("References")]
-    [SerializeField] private Text messageText; // Assign in Inspector
+    [SerializeField] private TMP_Text messageText; // Assign in Inspector
     [SerializeField] private CanvasGroup messageGroup;
-
+    [SerializeField] private GameObject interactionMessageTextObject;
+    [SerializeField] private TMP_Text interactionMessageText;
+    [SerializeField] private CanvasGroup interactionGroup;
     [Header("Settings")]
     [SerializeField] private float messageDisplayTime = 2f;
     [SerializeField] private float fadeSpeed = 5f;
@@ -29,8 +32,18 @@ public class UIManager : MonoBehaviour
 
         if (messageGroup)
             messageGroup.alpha = 0f;
+        HideInteractionMessage();
     }
-
+    void OnEnable()
+    {
+        InteractionEvents.OnFocus += ShowInteractionMessage;
+        InteractionEvents.OnLoseFocus += HideInteractionMessage;
+    }
+    void OnDisable()
+    {
+        InteractionEvents.OnFocus -= ShowInteractionMessage;
+        InteractionEvents.OnLoseFocus -= HideInteractionMessage;
+    }
     public void ShowMessage(string message)
     {
         if (messageRoutine != null)
@@ -38,7 +51,17 @@ public class UIManager : MonoBehaviour
 
         messageRoutine = StartCoroutine(DisplayMessageRoutine(message));
     }
+    public void ShowInteractionMessage(Interactable interactable)
+    {
+        interactionMessageText.text = interactable.InteractPrompt;
+        // interactionMessageTextObject.SetActive(true);
+        StartCoroutine(FadeCanvasGroup(interactionGroup, interactionGroup.alpha, 1f, 0.15f));
+    }
 
+    public void HideInteractionMessage(Interactable interactable = null)
+    {
+        StartCoroutine(FadeCanvasGroup(interactionGroup, interactionGroup.alpha, 0f, 0.2f));
+    }
     private IEnumerator DisplayMessageRoutine(string message)
     {
         if (messageText)

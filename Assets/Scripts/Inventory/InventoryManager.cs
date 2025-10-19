@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private InventorySlot currentInventoryItem;  // ✅ New field
     public System.Action onInventoryUpdated;
     public System.Action<InventorySlot> onItemSelected;  // ✅ New event
+    // ✅ This event notifies any UI or system that the inventory changed
+    public static event Action onInventoryChanged;
 
     private float currentWeight;
     public InventorySlot GetCurrentItem()
@@ -30,7 +33,16 @@ public class InventoryManager : MonoBehaviour
             return -1;
         return currentSelectedIndex;
     }
-
+    public int GetItemQuantity(ItemDataSO itemData)
+    {
+        int total = 0;
+        foreach (var slot in inventory)
+        {
+            if (slot.itemData == itemData)
+                total += slot.quantity;
+        }
+        return total;
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -95,6 +107,7 @@ public class InventoryManager : MonoBehaviour
         // 3️⃣ Done — trigger UI update
         onInventoryUpdated?.Invoke();
         UIManager.Instance?.ShowMessage($"+ {quantity}x {itemData.itemName}");
+        NotifyInventoryChanged(); // ✅ broadcast update
         return true;
     }
     public void SelectItemByIndex(int index)
@@ -138,6 +151,7 @@ public class InventoryManager : MonoBehaviour
             inventory.Remove(slot);
 
         UIManager.Instance?.ShowMessage($"Removed {itemData.itemName}");
+        NotifyInventoryChanged(); // ✅ broadcast update
         return true;
     }
 
@@ -156,7 +170,10 @@ public class InventoryManager : MonoBehaviour
         InventorySlot slot = inventory.Find(s => s.itemData == itemData);
         return slot != null ? slot.quantity : 0;
     }
-
+    private void NotifyInventoryChanged()
+    {
+        onInventoryChanged?.Invoke();
+    }
     public float GetCurrentWeight() => currentWeight;
 
     public List<InventorySlot> GetAllItems() => inventory;

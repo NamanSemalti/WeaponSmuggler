@@ -29,6 +29,7 @@ public class PlayerInteractor : MonoBehaviour
         if (_currentTarget != null && _input.interact) // "E" key mapped in StarterAssetsInputs
         {
             _currentTarget.Interact();
+            ClearFocus();
             _input.interact = false; // Reset input to avoid spamming
         }
     }
@@ -36,31 +37,31 @@ public class PlayerInteractor : MonoBehaviour
     private void DetectInteractable()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, interactDistance, interactLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayerMask))
         {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            // Try to find the root interactable (handles child colliders)
+            Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
 
             if (interactable != null)
             {
-                Debug.Log("hit " + hit.transform.name);
-                if (_currentTarget != interactable)
+                // ✅ Only trigger if we're looking at a *new* interactable
+                if (_currentTarget == null || _currentTarget.GetInstanceID() != interactable.GetInstanceID())
                 {
-                    ClearFocus();
+                    ClearFocus(); // remove focus from previous
                     _currentTarget = interactable;
                     _currentTarget.SetFocus(transform);
-
-                    // Notify UI system (decoupled)
-                    InteractionEvents.TriggerFocus(interactable);
+                    Debug.Log("Hitting " + interactable.name);
+                    // 🔥 Trigger only once when focus changes
+                    InteractionEvents.TriggerFocus(_currentTarget);
                 }
+                return; // still looking at an interactable, no need to clear
             }
         }
-        else
-        {
-            ClearFocus();
-        }
+
+        // ✅ If no interactable detected, clear focus once
+        ClearFocus();
     }
+
 
     private void ClearFocus()
     {

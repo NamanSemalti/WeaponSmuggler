@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour
+public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("UI References")]
     [SerializeField] private Image itemIcon;
@@ -10,13 +11,48 @@ public class InventorySlotUI : MonoBehaviour
     [SerializeField] private Image rarityBorder;
     [SerializeField] private Image selectionHighlight;
 
+    private CanvasGroup canvasGroup;
+    private Transform originalParent;
+    private RectTransform rectTransform;
     private InventorySlot representedSlot;
 
     public InventorySlot RepresentedSlot => representedSlot;
 
-    /// <summary>
-    /// Sets up slot with item data and quantity.
-    /// </summary>
+    void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
+    }
+
+    // ✅ Add these methods so drag/drop system works
+    public ItemDataSO GetItem()
+    {
+        return representedSlot != null ? representedSlot.itemData : null;
+    }
+
+    public int GetQuantity()
+    {
+        return representedSlot != null ? representedSlot.quantity : 0;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        originalParent = transform.parent;
+        transform.SetParent(transform.root);
+        canvasGroup.blocksRaycasts = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.position = eventData.position;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.SetParent(originalParent);
+        canvasGroup.blocksRaycasts = true;
+    }
+
     public void SetupSlot(InventorySlot slot)
     {
         representedSlot = slot;
@@ -36,21 +72,14 @@ public class InventorySlotUI : MonoBehaviour
             selectionHighlight.enabled = false;
     }
 
-    /// <summary>
-    /// Highlights or unhighlights this slot visually.
-    /// </summary>
     public void SetSelected(bool isSelected)
     {
         if (selectionHighlight)
             selectionHighlight.enabled = isSelected;
 
-        // Optional visual feedback (slight scale pop)
         transform.localScale = isSelected ? Vector3.one * 1.1f : Vector3.one;
     }
 
-    /// <summary>
-    /// Clears this slot (no item).
-    /// </summary>
     private void ClearSlot()
     {
         itemIcon.enabled = false;
@@ -59,9 +88,6 @@ public class InventorySlotUI : MonoBehaviour
             selectionHighlight.enabled = false;
     }
 
-    /// <summary>
-    /// Rarity-based border color.
-    /// </summary>
     private Color GetRarityColor(Rarity rarity)
     {
         switch (rarity)

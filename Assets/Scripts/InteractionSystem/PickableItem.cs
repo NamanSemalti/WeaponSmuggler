@@ -3,9 +3,7 @@ using UnityEngine;
 public class PickableItem : Interactable
 {
     [Header("Item Settings")]
-    [SerializeField] private string itemID; // unique identifier (for inventory integration later)
-    [SerializeField] private string itemName = "Item";
-    [SerializeField] private Sprite icon;
+    [SerializeField] private ItemDataSO itemDataSO;
     [SerializeField] private bool destroyOnPickup = true;
     [SerializeField] private AudioClip pickupSound;
 
@@ -17,12 +15,8 @@ public class PickableItem : Interactable
     protected override void OnInteract()
     {
         if (_isPickedUp) return;
-
         _isPickedUp = true;
-
-        ItemDataSO data = ItemDatabase.GetItemByID(itemID);
-        bool added = InventoryManager.Instance.AddItem(data, quantity);
-
+        bool added = InventoryManager.Instance.AddItem(itemDataSO, quantity);
         if (added)
         {
             InteractionEvents.TriggerPickup(this);
@@ -35,17 +29,6 @@ public class PickableItem : Interactable
         {
             _isPickedUp = false; // Inventory full or add failed
         }
-    }
-
-
-
-    private void AddToInventory()
-    {
-        // Placeholder for inventory system
-        // In MVP: can just log item pickup
-        Debug.Log($"Picked up: {itemName} (x{quantity})");
-
-        // Later: InventoryManager.Instance.AddItem(itemID, quantity);
     }
 
     // Optional highlight visual when focused
