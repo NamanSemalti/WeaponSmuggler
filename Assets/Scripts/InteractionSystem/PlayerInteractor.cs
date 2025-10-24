@@ -29,7 +29,7 @@ public class PlayerInteractor : MonoBehaviour
         if (_currentTarget != null && _input.interact) // "E" key mapped in StarterAssetsInputs
         {
             _currentTarget.Interact();
-            // ClearFocus();
+            ClearFocus();
             _input.interact = false; // Reset input to avoid spamming
         }
     }
