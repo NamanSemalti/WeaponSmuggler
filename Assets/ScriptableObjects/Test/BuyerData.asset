@@ -9,18 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda7088a22de2224eac1fb1d31db5d76, type: 3}
+  m_Script: {fileID: 11500000, guid: 354d4e2a40e8147499936d478f6554e2, type: 3}
   m_Name: BuyerData
   m_EditorClassIdentifier: 
-  buyerName: Naman
-  buyerIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  description: This is buyer's Desc
-  baseDemandMultiplier: 1
-  demandMultiplier: 1
-  riskMultiplier: 1
-  reputationRequirement: 0
-  isLegal: 0
-  requestedItems:
-  - item: {fileID: 11400000, guid: b877c157b0e344544bac382a1b60512f, type: 2}
-    requiredQuantity: 2
-    offeredPricePerUnit: 3
+  buyerName: Test_Buyer
+  requirements:
+  - requirementID: item_Handgun
+    item: {fileID: 11400000, guid: 7007647a59a6afc428b0af439c5065be, type: 2}
+    requiredQuantity: 1
+  - requirementID: item_test
+    item: {fileID: 11400000, guid: 8541a2b09baa35d488ef863618e5e6f2, type: 2}
+    requiredQuantity: 1
+  - requirementID: item_naman
+    item: {fileID: 11400000, guid: b877c157b0e344544bac382a1b60512f, type: 2}
+    requiredQuantity: 1
+  rewardMoney: 100
+  rewardReputation: 5
+  acceptSound: {fileID: 0}
+  rejectSound: {fileID: 0}

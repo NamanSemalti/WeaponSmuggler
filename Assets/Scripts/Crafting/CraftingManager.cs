@@ -8,7 +8,7 @@ public class CraftingManager : MonoBehaviour
 
     [SerializeField] private List<CraftingRecipeSO> allRecipes = new List<CraftingRecipeSO>();
     [SerializeField] private List<CraftingRecipeSO> unlockedRecipes = new List<CraftingRecipeSO>();
-
+    [SerializeField] private CraftingUI craftingUI;
     public System.Action<float> onCraftingProgress; // ✅ event for progress
     public System.Action onCraftingComplete;
 
@@ -27,7 +27,10 @@ public class CraftingManager : MonoBehaviour
     public List<CraftingRecipeSO> GetAllRecipes() => allRecipes;
     public bool IsRecipeUnlocked(CraftingRecipeSO recipe) => unlockedRecipes.Contains(recipe);
     public bool IsCrafting() => isCrafting;
-
+    public void OpenCraftingTable()
+    {
+        craftingUI.OpenCraftingTable();
+    }
     public bool CanCraft(CraftingRecipeSO recipe)
     {
         foreach (var ing in recipe.ingredients)

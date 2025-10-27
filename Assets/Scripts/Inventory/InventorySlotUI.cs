@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventorySlotUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Image itemIcon;
@@ -33,24 +33,6 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public int GetQuantity()
     {
         return representedSlot != null ? representedSlot.quantity : 0;
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        originalParent = transform.parent;
-        transform.SetParent(transform.root);
-        canvasGroup.blocksRaycasts = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        rectTransform.position = eventData.position;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        transform.SetParent(originalParent);
-        canvasGroup.blocksRaycasts = true;
     }
 
     public void SetupSlot(InventorySlot slot)

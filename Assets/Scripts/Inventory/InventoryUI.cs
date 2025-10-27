@@ -35,6 +35,10 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsScrollBusy)
+        {
+            return;
+        }
         HandleScrollSelection();
     }
 

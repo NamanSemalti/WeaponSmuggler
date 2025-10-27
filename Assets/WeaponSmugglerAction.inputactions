@@ -1,0 +1,52 @@
+{
+    "version": 1,
+    "name": "WeaponSmugglerAction",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "be3d9f97-5285-4c9b-9532-c4d2893b7246",
+            "actions": [
+                {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "3b12e126-0e1f-4f4b-807b-5e163007a552",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "49b5a79f-b04a-46e5-a7fb-6345e2fda0f9",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard/Mouse",
+            "bindingGroup": "Keyboard/Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

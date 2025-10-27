@@ -57,7 +57,11 @@ public class UIManager : MonoBehaviour
         // interactionMessageTextObject.SetActive(true);
         StartCoroutine(FadeCanvasGroup(interactionGroup, interactionGroup.alpha, 1f, 0.15f));
     }
-
+    public void ShowInteractionMessage(string interactionText)
+    {
+        interactionMessageText.text = interactionText;
+        StartCoroutine(FadeCanvasGroup(interactionGroup, interactionGroup.alpha, 1f, 0.15f));
+    }
     public void HideInteractionMessage(Interactable interactable = null)
     {
         StartCoroutine(FadeCanvasGroup(interactionGroup, interactionGroup.alpha, 0f, 0.2f));

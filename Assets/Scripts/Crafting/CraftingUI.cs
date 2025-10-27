@@ -11,6 +11,7 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private GameObject recipeButtonPrefab;
     [SerializeField] private Transform ingredientParent;
     [SerializeField] private GameObject ingredientBoxPrefab;
+    [SerializeField] private GameObject craftingUIMain;
 
     [Header("Detail References")]
     [SerializeField] private TMP_Text recipeNameText;
@@ -60,6 +61,10 @@ public class CraftingUI : MonoBehaviour
             btn.Setup(recipe, this);
             recipeButtons.Add(btn);
         }
+    }
+    public void OpenCraftingTable()
+    {
+        craftingUIMain.SetActive(true);
     }
     public void OnRecipeSelected(CraftingRecipeSO recipe)
     {

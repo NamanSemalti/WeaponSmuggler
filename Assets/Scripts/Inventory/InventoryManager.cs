@@ -105,9 +105,11 @@ public class InventoryManager : MonoBehaviour
         }
 
         // 3️⃣ Done — trigger UI update
-        onInventoryUpdated?.Invoke();
-        UIManager.Instance?.ShowMessage($"+ {quantity}x {itemData.itemName}");
+
         NotifyInventoryChanged(); // ✅ broadcast update
+        SelectItemByIndex(currentSelectedIndex);
+        UIManager.Instance?.ShowMessage($"+ {quantity}x {itemData.itemName}");
+
         return true;
     }
     public void SelectItemByIndex(int index)
@@ -172,6 +174,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void NotifyInventoryChanged()
     {
+        onInventoryUpdated?.Invoke();
         onInventoryChanged?.Invoke();
     }
     public float GetCurrentWeight() => currentWeight;

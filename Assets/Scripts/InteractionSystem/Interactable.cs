@@ -13,15 +13,20 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] private UnityEvent onInteract;
     [SerializeField] private UnityEvent onFocus;
     [SerializeField] private UnityEvent onLoseFocus;
-
+    [SerializeField] private GameObject itemUI;
     private bool _isFocused;
     private Transform _playerTransform;
 
     public string InteractPrompt => interactPrompt;
     public bool IsFocused => _isFocused;
+    private Collider coll;
+    private Rigidbody rb;
 
     protected virtual void Awake()
     {
+        coll = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
+        SetDisplayUI(false);
         // Optional: Set up defaults
     }
 
@@ -40,7 +45,17 @@ public abstract class Interactable : MonoBehaviour
         onLoseFocus?.Invoke();
         OnLoseFocus();
     }
-
+    public void SetInteractable(bool active)
+    {
+        this.enabled = active;
+        coll.enabled = active;
+        rb.isKinematic = !active;
+    }
+    public virtual void SetDisplayUI(bool active)
+    {
+        if (itemUI)
+            itemUI.SetActive(active);
+    }
     public bool CanInteract()
     {
         if (!_isFocused || _playerTransform == null) return false;

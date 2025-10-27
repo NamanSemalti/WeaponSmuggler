@@ -22,6 +22,12 @@ public class ItemDataSO : ScriptableObject
     [Header("Visuals")]
     public Sprite icon;
     public GameObject worldPrefab;
+    public string handPoolKey; // pool key (for ObjectPoolManager)
+    public Vector3 handOffset = Vector3.zero;     // Local position offset
+    public Vector3 handRotation = Vector3.zero;   // Local rotation (Euler)
+    public Vector3 handScale = Vector3.one;       // Local scale
+
+
 
     [Header("Stats")]
     public ItemType itemType;

@@ -20,6 +20,9 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+		[Header("Custom Actions")]
+		public bool throwPressed;
+		public float scrollDelta;
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -34,6 +37,20 @@ namespace StarterAssets
 				LookInput(value.Get<Vector2>());
 			}
 		}
+		public void OnThrow(InputValue value)
+		{
+			throwPressed = value.isPressed;
+			if (!value.isPressed)
+				Debug.Log("Throw Released!");
+		}
+
+
+		public void OnScroll(InputValue value)
+		{
+			Vector2 scroll = value.Get<Vector2>();
+			scrollDelta = scroll.y; // use vertical scroll axis
+		}
+
 
 		public void OnJump(InputValue value)
 		{
