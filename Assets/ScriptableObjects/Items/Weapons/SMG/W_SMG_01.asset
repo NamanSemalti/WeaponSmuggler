@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5607148ecf4e0d04294ccc9eaa04888c, type: 3}
+  m_Name: W_SMG_01
+  m_EditorClassIdentifier: 
+  itemID: W_SMG_01
+  itemName: Compact SMG
+  description: 
+  icon: {fileID: 0}
+  worldPrefab: {fileID: 0}
+  handPoolKey: W_SMG_01
+  handOffset: {x: 0, y: 0, z: 0}
+  handRotation: {x: 0, y: -15, z: -90}
+  handScale: {x: 1, y: 1, z: 1}
+  itemType: 2
+  maxStack: 10
+  weight: 1
+  baseValue: 100
+  rarity: 0
+  isQuestItem: 0
+  isKeyItem: 0
