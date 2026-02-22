@@ -32,4 +32,5 @@ public class PlayerEconomy : MonoBehaviour
         if (moneyText)
             moneyText.text = $"${money:N0}";
     }
+    public bool HasMoney(int amount) => money >= amount;
 }

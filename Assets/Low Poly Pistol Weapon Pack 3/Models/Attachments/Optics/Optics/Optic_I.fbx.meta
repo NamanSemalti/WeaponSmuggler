@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7344c37c9deacc245b6dc53d9e484038
+guid: a923e0d09a7e54f4d947681830d93d3f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -107,8 +107,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 313750
-  packageName: Low Poly AR Weapon Pack 3
+  productId: 283665
+  packageName: Low Poly ShotGun Weapon Pack 1
   packageVersion: 1.0
   assetPath: Assets/Low Poly Pistol Weapon Pack 3/Models/Attachments/Optics/Optics/Optic_I.fbx
-  uploadId: 741608
+  uploadId: 724253

@@ -19,7 +19,7 @@ MonoBehaviour:
   worldPrefab: {fileID: 0}
   handPoolKey: W_SMG_01
   handOffset: {x: 0, y: 0, z: 0}
-  handRotation: {x: 0, y: -15, z: -90}
+  handRotation: {x: 291.83844, y: 345, z: 270}
   handScale: {x: 1, y: 1, z: 1}
   itemType: 2
   maxStack: 10

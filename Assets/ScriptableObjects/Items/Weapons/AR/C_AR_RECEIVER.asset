@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5607148ecf4e0d04294ccc9eaa04888c, type: 3}
-  m_Name: C_MAG
+  m_Name: C_AR_RECEIVER
   m_EditorClassIdentifier: 
-  itemID: C_MAG
-  itemName: Magazine
-  description: Ammo magazine; capacity varies. Stackable item.
+  itemID: C_AR_RECEIVER
+  itemName: AR Receiver
+  description: 
   icon: {fileID: 0}
   worldPrefab: {fileID: 0}
-  handPoolKey: C_MAG
+  handPoolKey: C_AR_RECEIVER
   handOffset: {x: 0, y: 0, z: 0}
   handRotation: {x: 0, y: 0, z: 0}
   handScale: {x: 1, y: 1, z: 1}

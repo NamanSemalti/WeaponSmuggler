@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5607148ecf4e0d04294ccc9eaa04888c, type: 3}
-  m_Name: W_PST_01
+  m_Name: C_CLASSIC_PST_RECEIVER
   m_EditorClassIdentifier: 
-  itemID: W_PST_01
-  itemName: Handgun
-  description: 
-  icon: {fileID: 21300000, guid: f5fd73c56d491ba4888ab5092d890fc6, type: 3}
+  itemID: C_CLASSIC_PST_RECEIVER
+  itemName: Classic Receiver
+  description: Core housing that integrates fire-control parts.
+  icon: {fileID: 0}
   worldPrefab: {fileID: 0}
-  handPoolKey: W_PST_01
-  handOffset: {x: 0.16700003, y: -0.12599967, z: 0.11800003}
-  handRotation: {x: 0, y: -15, z: -90}
+  handPoolKey: C_CLASSIC_PST_RECEIVER
+  handOffset: {x: 0, y: 0, z: 0}
+  handRotation: {x: 0, y: 0, z: 0}
   handScale: {x: 1, y: 1, z: 1}
-  itemType: 2
+  itemType: 1
   maxStack: 10
   weight: 1
   baseValue: 100
